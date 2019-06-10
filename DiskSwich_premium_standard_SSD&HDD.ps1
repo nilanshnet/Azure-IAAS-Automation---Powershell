@@ -1,15 +1,21 @@
-﻿cls
+<#
+
+THIS SCRIPT ALSO HAS THE COMMANDS of new AZ-Module as well as the AZureRM module
+
+#>
+
+cls
 Login-AzureRmAccount
-$subscription_ID = '63f2f6e3-89a1-4677-a780-2f788788f101'
+$subscription_ID = 'XXXXXXXXXXXXXXXXXXXXXXXXX'
 Select-AzureRmSubscription -Subscription $subscription_ID
 
 $diskName = 'gav-arv-dr-dat-dsk-img-050'     # Name of the Managed disk 
 
-$rgName = 'GAV-ARV-DR-DEM-01'                 # resource group that contains the managed disk
+$rgName = 'GAV-ARV-DR-DEM-01'                # resource group that contains the managed disk
 
-$storageType = 'StandardSSD_LRS'                 # Choose between Standard_LRS, StandardSSD_LRS and Premium_LRS based on your scenario 
+$storageType = 'StandardSSD_LRS'             # Choose between Standard_LRS, StandardSSD_LRS and Premium_LRS based on your scenario 
 
-#$size = 'Standard_DS1_v2'                    # Premium capable size 
+#$size = 'Standard_DS1_v2'                   # Premium capable size 
 
 #$disk = Get-AzDisk -DiskName $diskName -ResourceGroupName $rgName
 $disk = Get-AzureRmDisk -DiskName $diskName -ResourceGroupName $rgName
