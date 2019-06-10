@@ -1,7 +1,9 @@
-﻿Clear-Host
+## The Script has new AZ-module and AZureRM module commands 
 
-$Subscription_ID = "63f2f6e3-89a1-4677-a780-2f788788f101"
-$rgName = "GAV-ARV-DR-DEM-01"
+Clear-Host
+
+$Subscription_ID = "XXXXXXXXXXXXXXXXXXXXXXXXXXX101"
+$rgName = "01"
 $location = "West US" 
 
 $dataDiskNames = @("datademodisk1","datademodisk2","datademodisk3","datademodisk4","datademodisk5")
@@ -21,4 +23,5 @@ $vm = Add-AzVMDataDisk -CreateOption Attach -Lun $lun -VM $vm -ManagedDiskId $di
 $lun++
 }
 
+#Update the VM after the Disk have been added
 Update-AzureRmVM -VM $vm -ResourceGroupName $rgName 
