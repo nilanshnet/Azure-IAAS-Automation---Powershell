@@ -1,9 +1,11 @@
-﻿
-$snapshot = Get-AzureRmSnapshot -ResourceGroupName GAV-ARV-DR-DEM-01 -SnapshotName snapshot0 -Verbose
+$rgName = "rgName"
+$Snapshotname = "snp001"
+$NewdiskName = "vdddd"
 
+$snapshot = Get-AzureRmSnapshot -ResourceGroupName $rgName -SnapshotName $Snapshotname -Verbose
 
 #New-AzureRmDiskConfig 
 $diskConfig = New-AzureRmDiskConfig -Location westus -SourceResourceId $snapshot.Id -CreateOption Copy;
-New-AzureRmDisk -Disk $diskConfig -ResourceGroupName GAV-ARV-DR-DEM-01 -DiskName testvmdisk1;
+New-AzureRmDisk -Disk $diskConfig -ResourceGroupName $rgName -DiskName $NewdiskName ;
 
 #-AccountType $storageType
