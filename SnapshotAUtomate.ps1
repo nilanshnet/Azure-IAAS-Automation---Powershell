@@ -1,17 +1,19 @@
-﻿Login-AzureRmAccount
+Login-AzureRmAccount
 
-$resourceGroupName = "GAV-ARV-DR-GEN-01" #"Input the name of the Resource Group where the VM is present "
-$vmName="arvdrimg001"    #"Input the name for the VM "
-$Location = "westus" #"Input the Location "
-$destresourceGroupName = "GAV-ARV-DR-BKP-01"
-#$subscriptionID = "341d16e4-6b63-4c11-b421-559c8d724348"
+$resourceGroupName = "GEN-01"  #"Input the name of the Resource Group where the VM is present "
+$vmName= "001"    #"Input the name for the VM "
+$Location = "westus"   #"Input the Location "
+$destresourceGroupName = "P-01"  #destination Resource Group for the SnapShots with the TIMESTAMP 
+$subscriptionID = "XXXXXXXXXXXXXXXXXXXXXXXXXXXX01"
 
-$subscriptionID = "63f2f6e3-89a1-4677-a780-2f788788f101"
 Select-AzureRmSubscription -Subscription $subscriptionID
 
+#Getting the VM
 $vm = Get-AzureRmVM -ResourceGroupName $resourceGroupName -Name $vmName
 Write-Host "VM details `n" -ForegroundColor Green -BackgroundColor Black
 $vm
+
+# Giving the user prompt to input the option slection of Snapshot creation for either for all DISKS or just the Data disks
 
 $caption="SNAPSHOTS"
 $message="CREATE SNAPSHOTS FOR :"
